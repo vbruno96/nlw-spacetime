@@ -71,7 +71,10 @@ module.exports = {
       },
       fontFamily: {
         sans: 'var(--font-roboto)',
-        title: 'var(--font-bai-jamjuree)',
+        title: 'var(--font-title)',
+      },
+      fontSize: {
+        '5xl': ['2.5rem', '125%'],
       },
       blur: {
         full: '194px',
