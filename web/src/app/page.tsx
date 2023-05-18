@@ -12,16 +12,11 @@ export default function Home() {
         <div className="absolute right-0 top-1/2 h-[288px] w-[526px] -translate-y-1/2 translate-x-1/2 rounded-full bg-purple-700 opacity-50 blur-full" />
         {/* Stripes */}
         <div className="absolute bottom-0 right-2 top-0 w-2 bg-stripes" />
-        {/* Sign-in */}
         <SignIn />
-
-        {/* Hero */}
         <Hero />
-
-        {/* Copyright */}
         <Copyright />
       </div>
-      {/* Rightm */}
+      {/* Right */}
       <div className="flex flex-col bg-[url(../assets/bg-stars.svg)] bg-cover p-16">
         <EmptyMemories />
       </div>
