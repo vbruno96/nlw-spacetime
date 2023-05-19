@@ -5,6 +5,7 @@ import { StatusBar } from 'expo-status-bar'
 import { useRouter } from 'expo-router'
 import * as SecureStore from 'expo-secure-store'
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
+
 import NLWLogo from '../src/assets/nlw-spacetime-logo.svg'
 
 import { api } from '../src/lib/api'
@@ -45,7 +46,7 @@ export default function App() {
   }, [response])
 
   return (
-    <View className={`relative flex-1 items-center px-8`}>
+    <View className="relative flex-1 items-center px-8">
       <View className="flex-1 items-center justify-center gap-6">
         <NLWLogo />
 
@@ -61,7 +62,7 @@ export default function App() {
 
         <TouchableOpacity
           activeOpacity={0.7}
-          className="rounded-full bg-green-500 px-5 py-3"
+          className="rounded-full bg-green-500 px-5 py-2"
           onPress={() => signInWithGithub()}
         >
           <Text className="font-alt text-sm uppercase text-black">
