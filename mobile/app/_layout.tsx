@@ -1,4 +1,4 @@
-import { SafeAreaView, ImageBackground } from 'react-native'
+import { ImageBackground } from 'react-native'
 import { StatusBar } from 'expo-status-bar'
 import * as SecureStore from 'expo-secure-store'
 import { styled } from 'nativewind'
@@ -14,11 +14,14 @@ import {
 import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
 import { SplashScreen, Stack } from 'expo-router'
 import { useEffect, useState } from 'react'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 
 const StyledStripes = styled(Stripes)
 
 export default function Layout() {
   const [isUserAuthenticated, setIsUserAuthenticated] = useState(false)
+
+  const { top, bottom } = useSafeAreaInsets()
 
   const [hasLoadedFonts] = useFonts({
     Roboto_400Regular,
@@ -35,28 +38,28 @@ export default function Layout() {
   if (!hasLoadedFonts) return <SplashScreen />
 
   return (
-    <SafeAreaView className="flex-1 bg-zinc-900">
-      <ImageBackground
-        source={blurBg}
-        className={`relative flex-1`}
-        imageStyle={{
-          position: 'absolute',
-          left: '-100%',
+    <ImageBackground
+      source={blurBg}
+      className={`relative flex-1 bg-zinc-900`}
+      imageStyle={{
+        position: 'absolute',
+        left: '-100%',
+      }}
+      style={{ paddingTop: top, paddingBottom: bottom }}
+    >
+      <StyledStripes className="absolute left-2" />
+      <StatusBar style="light" translucent />
+
+      <Stack
+        screenOptions={{
+          headerShown: false,
+          contentStyle: { backgroundColor: 'transparent' },
         }}
       >
-        <StyledStripes className="absolute left-2" />
-        <StatusBar style="light" translucent />
-
-        <Stack
-          screenOptions={{
-            headerShown: false,
-            contentStyle: { backgroundColor: 'transparent' },
-          }}
-        >
-          <Stack.Screen name="index" redirect={isUserAuthenticated} />
-          <Stack.Screen name="memories" />
-        </Stack>
-      </ImageBackground>
-    </SafeAreaView>
+        <Stack.Screen name="index" redirect={isUserAuthenticated} />
+        <Stack.Screen name="new" />
+        <Stack.Screen name="memories" />
+      </Stack>
+    </ImageBackground>
   )
 }
