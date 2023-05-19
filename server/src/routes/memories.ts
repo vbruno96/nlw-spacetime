@@ -4,7 +4,7 @@ import { prisma } from '../lib/prisma'
 
 export async function memoriesRoutes(app: FastifyInstance) {
   app.addHook('preHandler', async (request: FastifyRequest) => {
-    await request.jwtVerify
+    await request.jwtVerify()
   })
 
   app.get('/memories', async (request: FastifyRequest) => {
