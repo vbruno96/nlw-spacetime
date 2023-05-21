@@ -114,6 +114,7 @@ export default function NewMemory() {
             <Image
               source={{ uri: preview }}
               className="h-full w-full rounded-lg object-cover"
+              alt=""
             />
           ) : (
             <View className="flex-row items-center gap-2">
